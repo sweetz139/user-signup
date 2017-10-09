@@ -2,36 +2,59 @@
 <html>
 <head>
     <h3>PLEASE SIGN UP!!!!!!!! </h3>
-    <style></style>
+    <style>
+        .error{color: red;}
+        .p{
+            display: inline;
+        }
+    </style>
 </head>
 <body>
-    <form method = 'GET', method = 'POST'>
-    <label>
-    USERNAME:
-    <input type = "text" name = "username" value = '{{username}}'/><br/><br/>
 
-    </label>
-
-    <label>
-    PASSWORD:
-    <input type = "password" name = "password"/><br/><br/>
-   
+    <form action = '/validate_form' method = 'post'>
+        
+    <label for = 'username'>USERNAME:</label>
     
-    </label>
-    <label>
-    VERIFY PASSWORD:
-    <input type = "password" name = "verification"/><br/><br/>
-    </label>
-    <label>
-    EMAIL:
-    <input type = "text" name = "email" default = 'None'/><br/><br/>
-    </label>
-    <label>
-    Submit:
-    <input type = "submit" name = "submit" value = 'submit'/>
-    </label>
+    <input id = 'username' type = "text" name = "username" default = />
+    {%if user_error == ''%}
+    {{username}}
+    {%endif%}
+    {%if user_error != ''%}
+    
+    <p class="error"> {{user_error}} </p>
+    {%endif%}
+
+    <br/><br/>
+    
+    
+    <label for = "password">PASSWORD: </label>
+    <input id = 'password' type = "password" name = "password" default = 'password'/>
+    {%if pass_error != ''%}
+
+    <p class= 'error'> {{pass_error}} </p>
+    {%endif%}
+    <br/><br/>
+    <label for = 'verification'>VERIFY PASSWORD:</label>
+    <input id = 'verification' type = "password" name = "verification"/>
+    {%if verify_error != ''%}
+    <p class = 'error'> {{verify_error}} </p>
+    {%endif%}
+    <br/><br/>
+    
+    <label for ='email'>EMAIL: </label>
+    
+    <input id ='email' type = "text" name = "email" default = 'email' />
+    {%if email_error == ''%}
+    {{email}} 
+    {%endif%}
+    {%if email_error != ''%}
+    <p class='error'> {{email_error}} </p>
+    {%endif%}
+    <br/><br/>
+    <input type = "submit"/>
+    
     </form>
     
 </body>
 
-</\html>
+</html>
