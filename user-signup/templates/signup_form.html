@@ -14,11 +14,7 @@
     <form action = '/validate_form' method = 'post'>
         
     <label for = 'username'>USERNAME:</label>
-    
-    <input id = 'username' type = "text" name = "username" default = />
-    {%if user_error == ''%}
-    {{username}}
-    {%endif%}
+    <input id = 'username' type = "text" name = "username" value ="{{username}}" />
     {%if user_error != ''%}
     
     <p class="error"> {{user_error}} </p>
@@ -28,14 +24,14 @@
     
     
     <label for = "password">PASSWORD: </label>
-    <input id = 'password' type = "password" name = "password" default = 'password'/>
+    <input id = 'password' type = "password" name = "password"/>
     {%if pass_error != ''%}
 
     <p class= 'error'> {{pass_error}} </p>
     {%endif%}
     <br/><br/>
     <label for = 'verification'>VERIFY PASSWORD:</label>
-    <input id = 'verification' type = "password" name = "verification"/>
+    <input id = 'verification' type = "password" name = "verification" />
     {%if verify_error != ''%}
     <p class = 'error'> {{verify_error}} </p>
     {%endif%}
@@ -43,10 +39,7 @@
     
     <label for ='email'>EMAIL: </label>
     
-    <input id ='email' type = "text" name = "email" default = 'email' />
-    {%if email_error == ''%}
-    {{email}} 
-    {%endif%}
+    <input id ='email' type = "text" name = "email" default = 'email' value = "{{email}}"/>
     {%if email_error != ''%}
     <p class='error'> {{email_error}} </p>
     {%endif%}

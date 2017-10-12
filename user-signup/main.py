@@ -54,9 +54,9 @@ def validate_form():
     
     if email_length < 3:
         if email_length >=1:
-            email_error = 'email has to be between 3 to 20 characters'
-    elif len(email) >=21:
-            email_error = 'email has to be between 3 to 20 characters'
+            email_error = 'email has to be between 3 to 120 characters'
+    if email_length >=120:
+        email_error = 'email has to be less than characters'
     if email != '':
         if not '@' in email:
             email_error = 'email must have the form must have "@" in it'
@@ -80,12 +80,14 @@ def validate_form():
         return render_template('signup_form.html',**locals())
     elif user_error != '':
         return render_template('signup_form.html',**locals())
+    elif email_error !='':
+        return render_template('signup_form.html',**locals())
     
         
     
     else:
         session['username'] = request.form['username']
-        return render_template('greetings_user.html')#redirect(url_for('welcome'))
+        return render_template('greetings_user.html',username=username)#redirect(url_for('welcome'))
 
 
 
